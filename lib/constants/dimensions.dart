@@ -1,0 +1,10 @@
+const double kSizedBoxHeight = 10;
+const double kSizedBoxWidth = 14;
+const double kVerticalPadding = 8;
+const double kHorizontalPadding = 16;
+const double kVerticalMargin = 8;
+const double kHorizontalMargin = 8;
+const double kContainerRadius = 20;
+const double kIconContainerRadius = 50;
+const double kElevation = 4;
+const double kDividerThickness = 6;
