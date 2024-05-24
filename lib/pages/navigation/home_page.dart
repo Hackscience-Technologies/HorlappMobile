@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hfoods/pages/dashboard/products_page.dart';
+import 'package:hfoods/widgets/restaurant_card.dart';
 import 'package:hfoods/widgets/search_anchor_widget.dart';
 import 'package:hfoods/widgets/text_image_stack.dart';
 import '../../constants/dimensions.dart';
 import '../../models/food_model.dart';
+import '../../models/restaurant_model.dart';
 import '../../widgets/food_card.dart';
 import '../../widgets/page_view_widget.dart';
+import '../dashboard/restaurant_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -93,12 +97,230 @@ class _HomePageState extends State<HomePage> {
     ),
   ];
 
+  final List<Restaurant> restaurants = [
+    Restaurant(
+      id: "0",
+      image: 'assets/images/yam_chips.webp',
+      title: "Lorem ipsum dolor sit amet",
+      food: [
+        Food(
+          id: "0",
+          image: 'assets/images/big_mac.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "1",
+          image: 'assets/images/burger_king.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "2",
+          image: 'assets/images/little_mac.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "3",
+          image: 'assets/images/sliced_burger.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+      ],
+      rating: "4.6",
+    ),
+    Restaurant(
+      id: "1",
+      image: 'assets/images/burger_king.webp',
+      title: "Lorem ipsum dolor sit amet",
+      food: [
+        Food(
+          id: "0",
+          image: 'assets/images/big_mac.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "1",
+          image: 'assets/images/burger_king.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "2",
+          image: 'assets/images/little_mac.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "3",
+          image: 'assets/images/sliced_burger.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+      ],
+      rating: "4.6",
+    ),
+    Restaurant(
+      id: "2",
+      image: 'assets/images/little_mac.webp',
+      title: "Lorem ipsum dolor sit amet",
+      food: [
+        Food(
+          id: "0",
+          image: 'assets/images/big_mac.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "1",
+          image: 'assets/images/burger_king.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "2",
+          image: 'assets/images/little_mac.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "3",
+          image: 'assets/images/sliced_burger.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+      ],
+      rating: "4.6",
+    ),
+    Restaurant(
+      id: "3",
+      image: 'assets/images/sliced_burger.webp',
+      title: "Lorem ipsum dolor sit amet",
+      food: [
+        Food(
+          id: "0",
+          image: 'assets/images/big_mac.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "1",
+          image: 'assets/images/burger_king.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "2",
+          image: 'assets/images/little_mac.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "3",
+          image: 'assets/images/sliced_burger.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+      ],
+      rating: "4.6",
+    ),
+    Restaurant(
+      id: "4",
+      image: 'assets/images/big_mac.webp',
+      title: "Lorem ipsum dolor sit amet",
+      food: [
+        Food(
+          id: "0",
+          image: 'assets/images/big_mac.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "1",
+          image: 'assets/images/burger_king.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "2",
+          image: 'assets/images/little_mac.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "3",
+          image: 'assets/images/sliced_burger.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+      ],
+      rating: "4.6",
+    ),
+    Restaurant(
+      id: "5",
+      image: 'assets/images/yam_chips.webp',
+      title: "Lorem ipsum dolor sit amet",
+      food: [
+        Food(
+          id: "0",
+          image: 'assets/images/big_mac.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "1",
+          image: 'assets/images/burger_king.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "2",
+          image: 'assets/images/little_mac.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+        Food(
+          id: "3",
+          image: 'assets/images/sliced_burger.webp',
+          title: "Lorem ipsum dolor sit amet",
+          price: "\$ 10.90",
+          rating: "4.6",
+        ),
+      ],
+      rating: "4.6",
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final double defaultWidth = MediaQuery.of(context).size.width;
     final double defaultHeight = MediaQuery.of(context).size.height;
     final int imageCacheWidth = (defaultWidth * 2).floor();
-    final int imageCacheHeight = (defaultHeight / 10).floor();
 
     return Scaffold(
       body: SafeArea(
@@ -145,7 +367,8 @@ class _HomePageState extends State<HomePage> {
                     width: defaultWidth * 0.20,
                     child: OutlinedButton(
                       onPressed: () {
-                        Get.to(() => ProductsPage(categoryId: category['id']));
+                        Get.to(
+                            () => ProductsPage(categoryId: category['id']));
                       },
                       style: const ButtonStyle(
                         padding: MaterialStatePropertyAll<EdgeInsets>(
@@ -178,11 +401,49 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: kSizedBoxHeight,
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  vertical: kVerticalPadding, horizontal: kHorizontalPadding),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('Recommended'),
+                  GestureDetector(
+                    onTap: () {},
+                    child: const Text(
+                      'View More',
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              width: defaultWidth / 2,
+              height: defaultHeight / 3.5,
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: foods.length,
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(
+                    vertical: kVerticalPadding,
+                    horizontal: kHorizontalPadding),
+                itemBuilder: (context, index) {
+                  final food = foods[index];
+                  return FoodCard(
+                    food: food,
+                    imageCacheWidth: imageCacheWidth,
+                  );
+                },
+              ),
+            ),
             PageViewWidget(
               defaultWidth: defaultWidth,
               defaultHeight: defaultHeight,
-              title: 'New on Teleport',
-              linkTitle: 'All',
+              title: '',
+              linkTitle: '',
               onTap: () {},
               items: foods,
               itemBuilder: (context, index) {
@@ -221,9 +482,11 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Recommended'),
+                  const Text('Restaurants'),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const RestaurantPage());
+                    },
                     child: const Text(
                       'View More',
                       style: TextStyle(color: Colors.blue),
@@ -237,65 +500,18 @@ class _HomePageState extends State<HomePage> {
               height: defaultHeight / 3.5,
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: foods.length,
+                itemCount: restaurants.length,
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(
-                    vertical: kVerticalPadding, horizontal: kHorizontalPadding),
+                    vertical: kVerticalPadding,
+                    horizontal: kHorizontalPadding),
                 itemBuilder: (context, index) {
-                  final food = foods[index];
-                  return SizedBox(
-                    width: defaultWidth / 2,
-                    child: FoodCard(
-                      food: food,
-                      imageCacheWidth: imageCacheWidth,
-                    ),
+                  final restaurant = restaurants[index];
+                  return RestaurantCard(
+                    restaurant: restaurant,
+                    imageCacheWidth: imageCacheWidth,
                   );
                 },
-              ),
-            ),
-            const SizedBox(
-              height: kSizedBoxHeight,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: kVerticalPadding, horizontal: kHorizontalPadding),
-              child: Text('Trending this week'),
-            ),
-            const SizedBox(
-              height: kSizedBoxHeight,
-            ),
-            const TextImageStack(),
-            const SizedBox(
-              height: kSizedBoxHeight,
-            ),
-            const TextImageStack(),
-            const SizedBox(
-              height: kSizedBoxHeight,
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-              child: OutlinedButton(
-                style: ButtonStyle(
-                  padding: const MaterialStatePropertyAll<EdgeInsets>(
-                    EdgeInsets.symmetric(
-                      vertical: kVerticalPadding * 2,
-                      horizontal: kHorizontalPadding,
-                    ),
-                  ),
-                  side: MaterialStatePropertyAll<BorderSide>(
-                    BorderSide(
-                      color: Theme.of(context).colorScheme.primaryContainer
-                    )
-                  )
-                ),
-                onPressed: () {},
-                child: Text(
-                  'VIEW MORE',
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.primaryContainer
-                  ),
-                ),
               ),
             ),
             const SizedBox(

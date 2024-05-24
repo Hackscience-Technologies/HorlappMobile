@@ -28,16 +28,12 @@ class PageViewWidget extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(
-            vertical: kVerticalPadding,
             horizontal: kHorizontalPadding,
           ),
           child: SizedBox(
             width: defaultWidth,
             child: Row(
               mainAxisSize: MainAxisSize.max,
-
-
-               
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

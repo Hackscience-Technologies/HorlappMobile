@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hfoods/pages/dashboard/shopping_cart_page.dart';
+import 'package:hfoods/pages/dashboard/restaurant_page.dart';
+import 'package:hfoods/pages/restaurant/food_page.dart';
 
 import '../constants/dimensions.dart';
-import '../models/food_model.dart';
-import '../pages/dashboard/food_details_page.dart';
+import '../models/restaurant_model.dart';
 
-class FoodCard extends StatelessWidget {
-  final Food food;
+class RestaurantCard extends StatelessWidget {
+
+  final Restaurant restaurant;
   final int imageCacheWidth;
 
-  const FoodCard(
-      {super.key, required this.food, required this.imageCacheWidth});
+  const RestaurantCard({super.key, required this.restaurant, required this.imageCacheWidth});
 
   @override
   Widget build(BuildContext context) {
@@ -26,45 +26,25 @@ class FoodCard extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(kContainerRadius),
           ),
-          color: Theme.of(context).colorScheme.primary,
+          color: Theme.of(context).colorScheme.tertiary,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: [
-              Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Hero(
-                      tag: food.id.toString(),
-                      child: Image.asset(
-                        food.image!,
-                        cacheWidth: imageCacheWidth,
-                        width: defaultWidth,
-                        height: defaultHeight * 0.15,
-                        filterQuality: FilterQuality.high,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Hero(
+                  tag: 'restaurant ${restaurant.id.toString()}',
+                  child: Image.asset(
+                    restaurant.image!,
+                    cacheWidth: imageCacheWidth,
+                    width: defaultWidth,
+                    height: defaultHeight * 0.15,
+                    filterQuality: FilterQuality.high,
+                    fit: BoxFit.cover,
                   ),
-                  Positioned(
-                    top: 10,
-                    right: 10,
-                    child: IconButton(
-                      icon: const Icon(Icons.shopping_cart),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll<Color>(
-                          Colors.white.withAlpha(200),
-                        ),
-                        shape: const MaterialStatePropertyAll<CircleBorder>(
-                          CircleBorder(),
-                        ),
-                      ),
-                      onPressed: () => {Get.to(() => const ShoppingCartPage())},
-                    ),
-                  )
-                ],
+                ),
               ),
               const SizedBox(
                 height: kSizedBoxHeight,
@@ -79,7 +59,7 @@ class FoodCard extends StatelessWidget {
                   children: [
                     SizedBox(
                       child: Text(
-                        food.title!,
+                        restaurant.title!,
                         softWrap: true,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.background,
@@ -105,30 +85,20 @@ class FoodCard extends StatelessWidget {
                                 width: kSizedBoxWidth * 0.5,
                               ),
                               Text(
-                                food.rating!,
+                                restaurant.rating!,
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onPrimary
-                                          .withAlpha(100),
-                                    ),
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onPrimary
+                                      .withAlpha(100),
+                                ),
                               ),
                             ],
                           ),
                         ),
-                        Text(
-                          food.price!,
-                          style:
-                              Theme.of(context).textTheme.titleSmall?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onPrimary
-                                        .withAlpha(100),
-                                  ),
-                        )
                       ],
                     )
                   ],
@@ -138,7 +108,7 @@ class FoodCard extends StatelessWidget {
           ),
         ),
       ),
-      onTap: () => {Get.to(() => FoodDetailsPage(food: food))},
+      onTap: () => {Get.to(() => FoodPage(restaurant: restaurant))},
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:hfoods/widgets/food_list_view.dart';
 
 import '../../constants/dimensions.dart';
+import '../../models/food_model.dart';
 import '../../widgets/search_anchor_widget.dart';
 
 class ProductsPage extends StatefulWidget {
@@ -53,6 +54,43 @@ class _ProductsPageState extends State<ProductsPage> {
       ),
       "background": Colors.deepPurpleAccent,
     },
+  ];
+  final List<Food> foods = [
+    Food(
+      id: "0",
+      image: 'assets/images/yam_chips.webp',
+      title: "Lorem ipsum dolor sit amet",
+      price: "\$ 10.90",
+      rating: "4.6",
+    ),
+    Food(
+      id: "1",
+      image: 'assets/images/big_mac.webp',
+      title: "Lorem ipsum dolor sit amet",
+      price: "\$ 10.90",
+      rating: "4.6",
+    ),
+    Food(
+      id: "2",
+      image: 'assets/images/burger_king.webp',
+      title: "Lorem ipsum dolor sit amet",
+      price: "\$ 10.90",
+      rating: "4.6",
+    ),
+    Food(
+      id: "3",
+      image: 'assets/images/little_mac.webp',
+      title: "Lorem ipsum dolor sit amet",
+      price: "\$ 10.90",
+      rating: "4.6",
+    ),
+    Food(
+      id: "4",
+      image: 'assets/images/sliced_burger.webp',
+      title: "Lorem ipsum dolor sit amet",
+      price: "\$ 10.90",
+      rating: "4.6",
+    ),
   ];
 
   @override
@@ -163,8 +201,7 @@ class _ProductsPageState extends State<ProductsPage> {
                   child: Text(
                     "Expression & Classic",
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color:
-                          Theme.of(context)
+                          color: Theme.of(context)
                               .colorScheme
                               .onSecondaryContainer,
                         ),
@@ -173,19 +210,24 @@ class _ProductsPageState extends State<ProductsPage> {
                 const SizedBox(
                   height: kSizedBoxHeight * 2,
                 ),
-                const FoodListView(),
-                Divider(
-                  color: Theme.of(context).colorScheme.secondaryContainer,
+                Column(
+                  children: foods
+                      .map(
+                        (Food food) => Column(
+                          children: [
+                            FoodListView(
+                              food: food,
+                            ),
+                            Divider(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .secondaryContainer,
+                            ),
+                          ],
+                        ),
+                      )
+                      .toList(),
                 ),
-                const FoodListView(),
-                Divider(
-                  color: Theme.of(context).colorScheme.secondaryContainer,
-                ),
-                const FoodListView(),
-                Divider(
-                  color: Theme.of(context).colorScheme.secondaryContainer,
-                ),
-                const FoodListView(),
               ],
             ),
             Divider(
@@ -198,7 +240,7 @@ class _ProductsPageState extends State<ProductsPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: kSizedBoxHeight*2,
+                  height: kSizedBoxHeight * 2,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -208,29 +250,33 @@ class _ProductsPageState extends State<ProductsPage> {
                   child: Text(
                     "Cold Brew",
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color:
-                      Theme.of(context)
-                          .colorScheme
-                          .onSecondaryContainer,
-                    ),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSecondaryContainer,
+                        ),
                   ),
                 ),
                 const SizedBox(
                   height: kSizedBoxHeight * 2,
                 ),
-                const FoodListView(),
-                Divider(
-                  color: Theme.of(context).colorScheme.secondaryContainer,
+                Column(
+                  children: foods
+                      .map(
+                        (Food food) => Column(
+                      children: [
+                        FoodListView(
+                          food: food,
+                        ),
+                        Divider(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .secondaryContainer,
+                        ),
+                      ],
+                    ),
+                  )
+                      .toList(),
                 ),
-                const FoodListView(),
-                Divider(
-                  color: Theme.of(context).colorScheme.secondaryContainer,
-                ),
-                const FoodListView(),
-                Divider(
-                  color: Theme.of(context).colorScheme.secondaryContainer,
-                ),
-                const FoodListView(),
               ],
             ),
           ],

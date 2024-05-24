@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../constants/dimensions.dart';
+import '../models/food_model.dart';
+import '../pages/dashboard/food_details_page.dart';
 
 class FoodListView extends StatelessWidget {
-  const FoodListView({super.key});
+
+  final Food food;
+
+  const FoodListView({super.key, required this.food});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +18,9 @@ class FoodListView extends StatelessWidget {
     double defaultWidth = MediaQuery.of(context).size.width;
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.to(() => FoodDetailsPage(food: food));
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: kHorizontalPadding,
@@ -32,7 +40,7 @@ class FoodListView extends StatelessWidget {
                   SizedBox(
                     width: defaultWidth * 0.4,
                     child: Text(
-                      'Lorem ipsum dolor sit amet',
+                      food.title!,
                       style:
                       Theme.of(context).textTheme.titleMedium?.copyWith(
                         color: Theme.of(context)
@@ -63,7 +71,7 @@ class FoodListView extends StatelessWidget {
                     MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '\$5.0',
+                        food.price!,
                         style:
                         Theme.of(context).textTheme.titleMedium,
                       ),
@@ -81,7 +89,7 @@ class FoodListView extends StatelessWidget {
                             width: kSizedBoxWidth * 0.2,
                           ),
                           Text(
-                            '4.3',
+                            food.rating!,
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium?.copyWith(
@@ -101,7 +109,7 @@ class FoodListView extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.asset(
-                'assets/images/little_mac.webp',
+                food.image!,
                 width: 100,
                 height: 100,
                 cacheWidth: 100,
