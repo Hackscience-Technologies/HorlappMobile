@@ -1,28 +1,15 @@
-class Food {
-  final String? id;
-  final String? title;
-  final String? image;
+import 'package:hfoods/models/restaurant.dart';
+
+class Food extends RestaurantBase{
   final String? price;
   final String? rating;
 
-  Food({this.id, this.title, this.image, this.price, this.rating});
+  Food({super.id, super.title, super.image, this.price, this.rating});
 
-  //Factory method to create a food model from a map
-  factory Food.fromMap(Map<String, String> foodItem) {
-    return Food(
-        id: foodItem['id'],
-        title: foodItem['title'],
-        image: foodItem['image'],
-        price: foodItem['price'],
-        rating: foodItem['rating']);
-  }
-
-  //Convert the food model to a Map
+  @override
   Map<String, String?> toMap() {
     return {
-      'id': id,
-      'title': title,
-      'image': image,
+      ...super.toMap(),
       'price': price,
       'rating': rating,
     };

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hfoods/pages/dashboard/products_page.dart';
+import 'package:hfoods/pages/dashboard/shopping_cart_page.dart';
 import 'package:hfoods/widgets/restaurant_card.dart';
 import 'package:hfoods/widgets/search_anchor_widget.dart';
 import 'package:hfoods/widgets/text_image_stack.dart';
@@ -335,7 +336,9 @@ class _HomePageState extends State<HomePage> {
               subtitle: const Text('Enoch 👋'),
               subtitleTextStyle: Theme.of(context).textTheme.headlineSmall,
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(()=>const ShoppingCartPage());
+                },
                 icon: const Badge(
                   label: Text('14'),
                   child: Icon(

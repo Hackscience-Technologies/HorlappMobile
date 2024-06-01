@@ -1,7 +1,10 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hfoods/constants/dimensions.dart';
+import 'package:hfoods/widgets/draggable_sheet.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -21,15 +24,30 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
+    double defaultHeight = MediaQuery.of(context).size.height;
+    double defaultWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Track Order'),
+      ),
       body: SafeArea(
-        child: GoogleMap(
-          initialCameraPosition: _initialCameraPosition,
-          onMapCreated: (GoogleMapController controller) {
-            _controller.complete(controller);
-          },
+        child: Stack(
+          children:[
+            GoogleMap(
+              initialCameraPosition: _initialCameraPosition,
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
+              },
+            ),
+            const Align(
+              alignment: Alignment.bottomCenter,
+              child: DraggableSheet(),
+            )
+          ]
         ),
       ),
     );
   }
 }
+
