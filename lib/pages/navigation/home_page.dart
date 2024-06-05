@@ -321,6 +321,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final double defaultWidth = MediaQuery.of(context).size.width;
     final double defaultHeight = MediaQuery.of(context).size.height;
+
+    final TextTheme textTheme = Theme.of(context).textTheme;
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final int imageCacheWidth = (defaultWidth * 2).floor();
 
     return Scaffold(
@@ -331,10 +334,14 @@ class _HomePageState extends State<HomePage> {
               height: kSizedBoxHeight,
             ),
             ListTile(
-              title: const Text('Good Morning'),
-              titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+              title: const Text('Good Morning',),
+              titleTextStyle: textTheme.titleMedium?.copyWith(
+                color: colorScheme.onSurfaceVariant
+              ),
               subtitle: const Text('Enoch 👋'),
-              subtitleTextStyle: Theme.of(context).textTheme.headlineSmall,
+              subtitleTextStyle: textTheme.headlineMedium?.copyWith(
+                  color: colorScheme.onSurfaceVariant
+              ),
               trailing: IconButton(
                 onPressed: () {
                   Get.to(()=>const ShoppingCartPage());

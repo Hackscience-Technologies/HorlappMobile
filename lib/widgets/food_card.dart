@@ -17,6 +17,10 @@ class FoodCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final double defaultWidth = MediaQuery.of(context).size.width;
     final double defaultHeight = MediaQuery.of(context).size.height;
+
+    final TextTheme textTheme = Theme.of(context).textTheme;
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+
     return GestureDetector(
       child: SizedBox(
         width: defaultWidth * 0.5,
@@ -81,8 +85,8 @@ class FoodCard extends StatelessWidget {
                       child: Text(
                         food.title!,
                         softWrap: true,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.background,
+                        style: textTheme.bodyMedium?.copyWith(
+                          color:colorScheme.onPrimary
                         ),
                       ),
                     ),
@@ -122,7 +126,7 @@ class FoodCard extends StatelessWidget {
                         Text(
                           food.price!,
                           style:
-                              Theme.of(context).textTheme.titleSmall?.copyWith(
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
                                     color: Theme.of(context)
                                         .colorScheme
                                         .onPrimary

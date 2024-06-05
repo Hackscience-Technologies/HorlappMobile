@@ -70,18 +70,16 @@ class _OrdersPageState extends State<OrdersPage> with TickerProviderStateMixin {
                 ],
               ),
               child: Column(
-                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(
-                    height: kSizedBoxHeight,
-                  ),
+                 const Spacer(),
                   SearchFieldAnchor(
                     height: defaultHeight * 0.06,
                     hintText: "Search order",
                   ),
-                  const SizedBox(
-                    height: kSizedBoxHeight,
-                  ),
+                  const Spacer(),
                   SizedBox(
                     height: defaultHeight * 0.07,
                     child: ListView(
@@ -91,38 +89,35 @@ class _OrdersPageState extends State<OrdersPage> with TickerProviderStateMixin {
                       ),
                       scrollDirection: Axis.horizontal,
                       children: [
-                        SizedBox(
-                          width: defaultWidth * 0.33,
-                          child: TextButton(
-                            style: ButtonStyle(
-                              shape:
-                                  const MaterialStatePropertyAll<StadiumBorder>(
-                                StadiumBorder(),
-                              ),
-                              backgroundColor: MaterialStatePropertyAll<Color>(
-                                Theme.of(context).colorScheme.secondaryContainer,
-                              ),
+                        TextButton(
+                          style: ButtonStyle(
+                            shape:
+                                const MaterialStatePropertyAll<StadiumBorder>(
+                              StadiumBorder(),
                             ),
-                            onPressed: () {
-                              _updateCurrentPageIndex(0);
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "All",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .labelLarge
-                                      ?.copyWith(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .onSecondaryContainer),
-                                ),
-                              ],
+                            backgroundColor: MaterialStatePropertyAll<Color>(
+                              Theme.of(context).colorScheme.secondaryContainer,
                             ),
+                          ),
+                          onPressed: () {
+                            _updateCurrentPageIndex(0);
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "All",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelLarge
+                                    ?.copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSecondaryContainer),
+                              ),
+                            ],
                           ),
                         ),
                         const SizedBox(
@@ -202,6 +197,7 @@ class _OrdersPageState extends State<OrdersPage> with TickerProviderStateMixin {
                       ],
                     ),
                   ),
+                  const Spacer(),
                 ],
               ),
             ),

@@ -12,16 +12,20 @@ class QuantityManipulator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Row(
       children: [
         IconButton(
           icon: Icon(
             Icons.remove,
-            color: Colors.white.withAlpha(200),
+            color: colorScheme.onSecondaryContainer,
           ),
           style: ButtonStyle(
             backgroundColor: MaterialStatePropertyAll<Color>(
-              Colors.lightBlue.withAlpha(100),
+              colorScheme.secondaryContainer,
             ),
             shape: const MaterialStatePropertyAll<CircleBorder>(
               CircleBorder(),
@@ -45,11 +49,11 @@ class QuantityManipulator extends StatelessWidget {
         IconButton(
           icon: Icon(
             Icons.add,
-            color: Colors.white.withAlpha(200),
+            color: colorScheme.onSecondaryContainer,
           ),
           style: ButtonStyle(
             backgroundColor: MaterialStatePropertyAll<Color>(
-              Colors.blueAccent.withAlpha(200),
+              colorScheme.secondaryContainer,
             ),
             shape: const MaterialStatePropertyAll<CircleBorder>(
               CircleBorder(),

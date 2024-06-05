@@ -16,6 +16,10 @@ class SearchFieldAnchor extends StatefulWidget {
 class _SearchFieldAnchorState extends State<SearchFieldAnchor> {
   @override
   Widget build(BuildContext context) {
+
+    final TextTheme textTheme = Theme.of(context).textTheme;
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: kVerticalPadding,
@@ -31,6 +35,11 @@ class _SearchFieldAnchorState extends State<SearchFieldAnchor> {
               ),
               elevation: const MaterialStatePropertyAll<double>(0),
               hintText: widget.hintText,
+              hintStyle: MaterialStatePropertyAll<TextStyle>(
+                textTheme.titleMedium!.copyWith(
+                  color: colorScheme.onSurfaceVariant.withAlpha(100)
+                )
+              ),
               shape: MaterialStatePropertyAll<OutlinedBorder>(
                 StadiumBorder(
                   side:
